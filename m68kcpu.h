@@ -97,7 +97,9 @@ typedef uint32 uint64;
 #endif
 
 #include "softfloat/milieu.h"
+#if M68K_EMULATE_FPOINT
 #include "softfloat/softfloat.h"
+#endif
 
 
 /* Allow for architectures that don't have 8-bit sizes */
@@ -950,10 +952,12 @@ typedef struct
 	uint cacr;         /* Cache Control Register (m68020, unemulated) */
 	uint caar;         /* Cache Address Register (m68020, unemulated) */
 	uint ir;           /* Instruction Register */
+#if M68K_EMULATE_FPOINT
 	floatx80 fpr[8];     /* FPU Data Register (m68030/040) */
 	uint fpiar;        /* FPU Instruction Address Register (m68040) */
 	uint fpsr;         /* FPU Status Register (m68040) */
 	uint fpcr;         /* FPU Control Register (m68040) */
+#endif
 	uint t1_flag;      /* Trace 1 */
 	uint t0_flag;      /* Trace 0 */
 	uint s_flag;       /* Supervisor */
