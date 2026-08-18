@@ -96,7 +96,12 @@ typedef uint32 uint64;
 #define S64(val) val
 #endif
 
-#include "softfloat/milieu.h"
+/* SoftFloat types used by non-FPU code (int8/int16/int32 in opcode
+ * handlers and bitfield helpers). SoftFloat itself is not compiled
+ * in — see M68K_EMULATE_FPOINT guard. */
+typedef sint8  int8;
+typedef sint16 int16;
+typedef sint32 int32;
 #if M68K_EMULATE_FPOINT
 #include "softfloat/softfloat.h"
 #endif
